@@ -1,0 +1,8 @@
+#+TITLE: Readme
+
+* Passafe The password manager for linux
+Passafe is a password manager made for linux using rust
+
+* Features
+Fast
+Secure
