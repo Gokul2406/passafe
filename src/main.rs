@@ -1,3 +1,5 @@
+mod dashboard;
+
 fn main() {
-    println!("Welcome to passafe");
+    dashboard::dashboard_options::option();
 }
