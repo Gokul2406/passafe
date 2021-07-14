@@ -1,5 +1,8 @@
 mod dashboard;
+mod initial_setup;
 
 fn main() {
-    dashboard::dashboard_options::option();
+    // The inital setup covers creating the file for passwords etc.
+    initial_setup::initial_setup::check_if_file_exists();
+    dashboard::dashboard_options::list_option();
 }
