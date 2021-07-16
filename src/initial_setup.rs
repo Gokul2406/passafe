@@ -1,7 +1,8 @@
 pub mod initial_setup {
     use home::home_dir;
-    use std::fs::{File, write};
+    use serde_json::json;
     use serde_json;
+    use std::fs::{write, File};
     use std::io;
 
     // The function checks if the passwords.json file exists
@@ -12,13 +13,23 @@ pub mod initial_setup {
         let password_file = password_dir.join("passwords.json");
 
         // Create the program dir where we can store the passwords file
-         std::fs::create_dir_all(&password_dir).unwrap();
+        std::fs::create_dir_all(&password_dir).unwrap();
 
         // Create the file where we can store the passwords
-            File::create(&password_file).unwrap();
+        File::create(&password_file).unwrap();
 
         let master_password = get_master_password_from_user().unwrap();
-        write(&password_file, serde_json::to_string_pretty(&master_password).unwrap()).unwrap();
+
+        let initial_json = json!({
+            "masterPassword": master_password
+        });
+
+        write(
+            &password_file,
+            serde_json::to_string_pretty(&initial_json).unwrap(),
+
+        )
+        .unwrap();
     }
 
     fn get_master_password_from_user() -> Result<String, io::Error> {
