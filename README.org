@@ -1,6 +1,8 @@
 #+TITLE: Readme
 
 * Work In Progress
+This project is still under construction and is not recommended to use it right now as many core functionalities hasn't been implemented yet
+
 * Passafe The password manager for linux
 Passafe is a password manager made for linux using rust
 
