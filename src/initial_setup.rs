@@ -6,6 +6,7 @@ pub mod initial_setup {
     use std::io;
     use bcrypt;
 
+
     // The function checks if the passwords.json file exists
     // and if it doesn't, it creates the file
     // If the file exists also the program wont panic which is the intedended behaviour
@@ -22,8 +23,9 @@ pub mod initial_setup {
         let master_password = get_master_password_from_user().unwrap();
 
         let initial_json = json!({
-            "masterPassword": master_password
+            "master_password": master_password
         });
+
 
         write(
             &password_file,
