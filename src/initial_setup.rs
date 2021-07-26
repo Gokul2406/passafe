@@ -4,6 +4,7 @@ pub mod initial_setup {
     use serde_json;
     use std::fs::{write, File};
     use std::io;
+    use bcrypt;
 
     // The function checks if the passwords.json file exists
     // and if it doesn't, it creates the file
@@ -32,14 +33,22 @@ pub mod initial_setup {
         .unwrap();
     }
 
-    fn get_master_password_from_user() -> Result<String, io::Error> {
+    fn get_master_password_from_user() -> Result<String, &'static str> {
         let mut master_password = String::new();
         println!("Lets setup your new password for this app");
         io::stdin()
             .read_line(&mut master_password)
             .expect("Some error occurred");
-        let master_password = String::from(master_password.trim());
+        master_password = String::from(master_password.trim());
 
-        Ok(master_password)
+        let hashed_master_password = {
+            let this = bcrypt::hash(&master_password, 12);
+            match this {
+                Ok(t) => t,
+                Err(_) => return Err("What the hell are you doing")
+            }
+        };
+
+        Ok(hashed_master_password)
     }
 }
