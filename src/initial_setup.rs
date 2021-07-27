@@ -1,11 +1,10 @@
 pub mod initial_setup {
+    use bcrypt;
     use home::home_dir;
-    use serde_json::json;
     use serde_json;
+    use serde_json::json;
     use std::fs::{write, File};
     use std::io;
-    use bcrypt;
-
 
     // The function checks if the passwords.json file exists
     // and if it doesn't, it creates the file
@@ -22,15 +21,11 @@ pub mod initial_setup {
 
         let master_password = get_master_password_from_user().unwrap();
 
-        let initial_json = json!({
-            "master_password": master_password
-        });
-
+        let initial_json = json!({ "master_password": master_password });
 
         write(
             &password_file,
             serde_json::to_string_pretty(&initial_json).unwrap(),
-
         )
         .unwrap();
     }
@@ -47,7 +42,7 @@ pub mod initial_setup {
             let this = bcrypt::hash(&master_password, 12);
             match this {
                 Ok(t) => t,
-                Err(_) => return Err("What the hell are you doing")
+                Err(_) => return Err("What the hell are you doing"),
             }
         };
 

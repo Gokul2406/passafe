@@ -1,9 +1,10 @@
 use dashboard::dashboard_options;
-use serde::{Serialize, Deserialize};
+use serde::{Deserialize, Serialize};
 
+mod commands;
 mod dashboard;
-mod login;
 mod initial_setup;
+mod login;
 
 fn main() {
     // The inital setup covers creating the file for passwords etc.
@@ -17,14 +18,13 @@ fn main() {
         let hashjson: MasterPassword = serde_json::from_str(&hashfile.as_str()).unwrap();
         let status = login::login::login(hashjson.master_password);
         if status {
-            dashboard_options::list_option();
-        } else{
-            eprint!("Incorrect password")
+            commands::commands::create_password();
+        } else {
         }
     }
 }
 
 #[derive(Serialize, Deserialize)]
 struct MasterPassword<'a> {
-    master_password: &'a str
+    master_password: &'a str,
 }
