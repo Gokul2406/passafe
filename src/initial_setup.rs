@@ -1,8 +1,8 @@
 pub mod initial_setup {
+    use crate::data::Data;
     use bcrypt;
     use home::home_dir;
     use serde_json;
-    use serde_json::json;
     use std::fs::{write, File};
     use std::io;
 
@@ -21,11 +21,14 @@ pub mod initial_setup {
 
         let master_password = get_master_password_from_user().unwrap();
 
-        let initial_json = json!({ "master_password": master_password });
+        let initial_data = Data {
+            master_password,
+            password: vec![],
+        };
 
         write(
             &password_file,
-            serde_json::to_string_pretty(&initial_json).unwrap(),
+            serde_json::to_string_pretty(&initial_data).unwrap(),
         )
         .unwrap();
     }
