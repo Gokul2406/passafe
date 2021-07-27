@@ -19,4 +19,5 @@ Creating Passwords and storing them
 This project is open to contributions from anyone.
 
 * Contact The Author
-** Email gokulpbharathan89@gmail.com
+** Email
+gokulpbharathan89@gmail.com
