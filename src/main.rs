@@ -22,6 +22,7 @@ fn main() {
             let option: u8 = option.trim().parse::<u8>().unwrap();
             match option {
                 1 =>  commands::commands::create_password(),
+                3 => commands::commands::list_all_passwords(),
                 _ => eprintln!("Select from the given option")
             }
 
