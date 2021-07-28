@@ -5,6 +5,7 @@ pub mod initial_setup {
     use serde_json;
     use std::fs::{write, File};
     use std::io;
+    use rpassword::read_password;
 
     // The function checks if the passwords.json file exists
     // and if it doesn't, it creates the file
@@ -34,11 +35,8 @@ pub mod initial_setup {
     }
 
     fn get_master_password_from_user() -> Result<String, &'static str> {
-        let mut master_password = String::new();
         println!("Lets setup your new password for this app");
-        io::stdin()
-            .read_line(&mut master_password)
-            .expect("Some error occurred");
+        let mut master_password = read_password().unwrap();
         master_password = String::from(master_password.trim());
 
         let hashed_master_password = {
