@@ -18,12 +18,21 @@ fn main() {
         let hashjson: MasterPassword = serde_json::from_str(&hashfile.as_str()).unwrap();
         let status = login::login::login(hashjson.master_password);
         if status {
+            loop {
             let option = dashboard_options::list_option();
             let option: u8 = option.trim().parse::<u8>().unwrap();
             match option {
                 1 =>  commands::commands::create_password(),
-                3 => commands::commands::list_all_passwords(),
-                _ => eprintln!("Select from the given option")
+                3 =>  {
+                    commands::commands::list_all_passwords();
+                    break;
+                },
+                4 => process::exit(1),
+                _ => {
+                    eprintln!("Select from the given option \n");
+                        continue;
+                }
+            }
             }
 
         } else {
