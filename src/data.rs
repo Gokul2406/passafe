@@ -67,8 +67,7 @@ impl Data {
 
 fn convert_password_file_to_json() -> Data {
         let file_contents = std::fs::read_to_string(&locate_file()).unwrap();
-        let mut file_json: Data = serde_json::from_str(&file_contents).unwrap();
-        return file_json
+        serde_json::from_str(&file_contents).unwrap()
 }
 
 fn get_master_password() -> String {

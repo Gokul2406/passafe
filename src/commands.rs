@@ -1,7 +1,6 @@
 pub mod commands {
     use crate::data::PasswordJson;
     use std::io;
-    use magic_crypt;
 
     pub fn create_password() {
         let mut password = String::new();
