@@ -15,6 +15,10 @@ Login functionality
 
 Creating Passwords and storing them
 
+Encrypting user inputed passwords before storing them
+
+Printing all the passwords given by the user after decrypting it
+
 * Contributing
 This project is open to contributions from anyone.
 
