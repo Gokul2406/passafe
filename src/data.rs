@@ -32,14 +32,17 @@ impl PasswordJson {
         let file_json = convert_password_file_to_json();
         let passwords = file_json.password;
         for password in &passwords {
-            println!("{:?}", password)
+            println!("{}", password)
         }
     }
 }
 
 impl fmt::Display for PasswordJson {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
-        write!(f, "URL: {}, Name: {}, Password: {}", self.url, self.name, self.password)
+        let master_password = get_master_password();
+        let mc = new_magic_crypt!(master_password, 256);
+        let decrypted_password = mc.decrypt_base64_to_string(&self.password).unwrap();
+        write!(f, "URL: {}, Name: {}, Password: {}", self.url, self.name, decrypted_password)
     }
 }
 
@@ -66,4 +69,9 @@ fn convert_password_file_to_json() -> Data {
         let file_contents = std::fs::read_to_string(&locate_file()).unwrap();
         let mut file_json: Data = serde_json::from_str(&file_contents).unwrap();
         return file_json
+}
+
+fn get_master_password() -> String {
+    let file = convert_password_file_to_json();
+    file.master_password
 }
