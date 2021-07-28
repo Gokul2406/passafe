@@ -18,9 +18,13 @@ fn main() {
         let hashjson: MasterPassword = serde_json::from_str(&hashfile.as_str()).unwrap();
         let status = login::login::login(hashjson.master_password);
         if status {
-            let mut option = dashboard_options::list_option();
+            let option = dashboard_options::list_option();
             let option: u8 = option.trim().parse::<u8>().unwrap();
-            commands::commands::create_password();
+            match option {
+                1 =>  commands::commands::create_password(),
+                _ => eprintln!("Select from the given option")
+            }
+
         } else {
             eprint!("Incorrect Password");
             process::exit(1);

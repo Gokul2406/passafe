@@ -4,7 +4,6 @@ pub mod initial_setup {
     use home::home_dir;
     use serde_json;
     use std::fs::{write, File};
-    use std::io;
     use rpassword::read_password;
 
     // The function checks if the passwords.json file exists
