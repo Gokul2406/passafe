@@ -17,10 +17,12 @@ Fun thing about passafe is that it doesn't store passwords in raw format rather 
 
 * FAQs about passafe
 - Where are passwords stored ?
+
   Passwords are stored in *~/.local/share/passafe/passwords.json* file
   JSON is easily readable but since passafe stores passwords by encrypting it no one can look at the password by using the file
 
 - Is passafe collecting any data ?
+
   No not at all. Passafe doesn't collect any info or store your password in a database. If you want to check whether we are telling the truth it's easy just read to source code and you will understand that passafe doesn't store any of your data in a database
 
 * Installation
