@@ -35,14 +35,6 @@ impl PasswordJson {
             println!("{}", password);
         }
     }
-
-    pub fn delete(name: String) {
-        let file = convert_password_file_to_json();
-        for i in file.password {
-            if i.name.contains(&name) {
-            }
-        }
-    }
 }
 
 impl fmt::Display for PasswordJson {
