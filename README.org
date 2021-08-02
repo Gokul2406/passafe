@@ -8,13 +8,13 @@ Fun thing about passafe is that it doesn't store passwords in raw format rather 
 * Installation
 ** Compiling from source
 - Clone the repo using
-  #+begin_src bash
+#+begin_src bash
   git clone https://github.com/Gokul2406/passafe.git
-  #+end_src
+#+end_src
   - After cloning the repo cd into passafe
-    #+begin_src bash
+#+begin_src bash
     cargo install --path .
-    #+end_src
+#+end_src
 
 ** Binary installation
 - You can download the binary from
