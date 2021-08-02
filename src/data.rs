@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 
 use crate::locate_file;
 
-#[derive(Deserialize, Serialize, Debug)]
+#[derive(Deserialize, Serialize, Debug, PartialEq, PartialOrd)]
 pub struct PasswordJson {
     pub url: String,
     pub name: String,
@@ -32,7 +32,15 @@ impl PasswordJson {
         let file_json = convert_password_file_to_json();
         let passwords = file_json.password;
         for password in &passwords {
-            println!("{}", password)
+            println!("{}", password);
+        }
+    }
+
+    pub fn delete(name: String) {
+        let file = convert_password_file_to_json();
+        for i in file.password {
+            if i.name.contains(&name) {
+            }
         }
     }
 }

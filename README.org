@@ -1,10 +1,25 @@
 #+TITLE: Passafe
 
-* Work In Progress
-This project is still under construction and is not recommended to use it right now as many core functionalities hasn't been implemented yet
-
 * Passafe The password manager for linux
 Passafe is a password manager made for linux using rust
+Passafe stores the passwords in your local filesystem. This ensures that only you the user will be able to see the passwords
+Fun thing about passafe is that it doesn't store passwords in raw format rather it encrypts it using the master password provided by the user
+
+* Installation
+** Compiling from source
+- Clone the repo using
+  #+begin_src bash
+  git clone https://github.com/Gokul2406/passafe.git
+  #+end_src
+  - After cloning the repo cd into passafe
+    #+begin_src bash
+    cargo install --path .
+    #+end_src
+
+** Binary installation
+- You can download the binary from
+  https://github.com/Gokul2406/passafe/releases/download/1.0/passafe
+- Then run passafe and have fun!
 
 * Features implemented so far
 Creating a master password

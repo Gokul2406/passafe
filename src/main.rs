@@ -23,11 +23,10 @@ fn main() {
             let option: u8 = option.trim().parse::<u8>().unwrap();
             match option {
                 1 =>  commands::commands::create_password(),
-                3 =>  {
+                2 =>  {
                     commands::commands::list_all_passwords();
-                    break;
                 },
-                4 => process::exit(1),
+                3 => process::exit(1),
                 _ => {
                     eprintln!("Select from the given option \n");
                         continue;
@@ -36,7 +35,7 @@ fn main() {
             }
 
         } else {
-            eprint!("Incorrect Password");
+            eprint!("Incorrect Password \n");
             process::exit(1);
         }
     }
@@ -52,4 +51,3 @@ pub fn locate_file() -> PathBuf {
     path_to_dir.join("passwords.json")
 }
 
-// TODO Probably change this mess into another function
