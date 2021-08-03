@@ -57,9 +57,10 @@ Encrypting user inputed passwords before storing them
 
 Printing all the passwords given by the user after decrypting it
 
+Coloured outputs
+
 * Features which are planned to be implemented
 - Adding regex to userinputs
-- Coloured outputs
 - Searching for passwords and listing them
 
 * Contributing
