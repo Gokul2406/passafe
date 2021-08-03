@@ -1,6 +1,6 @@
 use std::{fmt, fs::{write}};
-
 use magic_crypt::{MagicCryptTrait, new_magic_crypt};
+use colored::Colorize;
 use serde::{Deserialize, Serialize};
 
 use crate::locate_file;
@@ -42,7 +42,7 @@ impl fmt::Display for PasswordJson {
         let master_password = get_master_password();
         let mc = new_magic_crypt!(master_password, 256);
         let decrypted_password = mc.decrypt_base64_to_string(&self.password).unwrap();
-        write!(f, "URL: {}, Name: {}, Password: {}", self.url, self.name, decrypted_password)
+        write!(f, "URL: {}, Name: {}, Password: {}", self.url.blue().bold(), self.name.green().bold(), decrypted_password.bold().yellow())
     }
 }
 
