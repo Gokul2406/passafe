@@ -59,10 +59,6 @@ Printing all the passwords given by the user after decrypting it
 
 Coloured outputs
 
-* Features which are planned to be implemented
-- Adding regex to userinputs
-- Searching for passwords and listing them
-
 * Contributing
 This project is open to contributions from anyone.
 
