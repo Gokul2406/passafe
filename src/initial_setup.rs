@@ -2,9 +2,9 @@ pub mod initial_setup {
     use crate::data::Data;
     use bcrypt;
     use home::home_dir;
+    use rpassword::read_password;
     use serde_json;
     use std::fs::{write, File};
-    use rpassword::read_password;
 
     // The function checks if the passwords.json file exists
     // and if it doesn't, it creates the file

@@ -1,7 +1,7 @@
-use std::{fmt, fs::{write}};
-use magic_crypt::{MagicCryptTrait, new_magic_crypt};
 use colored::Colorize;
+use magic_crypt::{new_magic_crypt, MagicCryptTrait};
 use serde::{Deserialize, Serialize};
+use std::{fmt, fs::write};
 
 use crate::locate_file;
 
@@ -15,7 +15,9 @@ pub struct PasswordJson {
 impl PasswordJson {
     pub fn new(name: String, url: String, password: String) -> PasswordJson {
         PasswordJson {
-            name, url, password
+            name,
+            url,
+            password,
         }
     }
 
@@ -42,7 +44,13 @@ impl fmt::Display for PasswordJson {
         let master_password = get_master_password();
         let mc = new_magic_crypt!(master_password, 256);
         let decrypted_password = mc.decrypt_base64_to_string(&self.password).unwrap();
-        write!(f, "URL: {}, Name: {}, Password: {}", self.url.blue().bold(), self.name.green().bold(), decrypted_password.bold().yellow())
+        write!(
+            f,
+            "URL: {}, Name: {}, Password: {}",
+            self.url.blue().bold(),
+            self.name.green().bold(),
+            decrypted_password.bold().yellow()
+        )
     }
 }
 
@@ -64,10 +72,9 @@ impl Data {
     }
 }
 
-
 fn convert_password_file_to_json() -> Data {
-        let file_contents = std::fs::read_to_string(&locate_file()).unwrap();
-        serde_json::from_str(&file_contents).unwrap()
+    let file_contents = std::fs::read_to_string(&locate_file()).unwrap();
+    serde_json::from_str(&file_contents).unwrap()
 }
 
 fn get_master_password() -> String {

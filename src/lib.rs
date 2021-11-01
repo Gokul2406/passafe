@@ -1,11 +1,11 @@
-mod dashboard;
 mod commands;
-mod login;
-mod initial_setup;
+mod dashboard;
 mod data;
+mod initial_setup;
+mod login;
 
-use std::{path::PathBuf, process};
 use serde::{Deserialize, Serialize};
+use std::{path::PathBuf, process};
 
 use crate::dashboard::dashboard_options;
 
@@ -19,21 +19,20 @@ pub fn run() {
         let status = login::login::login(hashjson.master_password);
         if status {
             loop {
-            let option = dashboard_options::list_option();
-            let option: u8 = option.trim().parse::<u8>().unwrap();
-            match option {
-                1 =>  commands::commands::create_password(),
-                2 =>  {
-                    commands::commands::list_all_passwords();
-                },
-                3 => process::exit(1),
-                _ => {
-                    eprintln!("Select from the given option \n");
+                let option = dashboard_options::list_option();
+                let option: u8 = option.trim().parse::<u8>().unwrap();
+                match option {
+                    1 => commands::commands::create_password(),
+                    2 => {
+                        commands::commands::list_all_passwords();
+                    }
+                    3 => process::exit(1),
+                    _ => {
+                        eprintln!("Select from the given option \n");
                         continue;
+                    }
                 }
             }
-            }
-
         } else {
             eprint!("Incorrect Password \n");
             process::exit(1);
