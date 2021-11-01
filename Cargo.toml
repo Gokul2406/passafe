@@ -1,6 +1,6 @@
 [package]
 name = "passafe"
-version = "1.0.1"
+version = "1.0.2"
 authors = ["Gokul2406 <gokulpbharathan89@gmail.com>"]
 edition = "2018"
 license = "GPL-2.0-or-later"

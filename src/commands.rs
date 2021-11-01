@@ -1,6 +1,6 @@
 pub mod commands {
-    use colored::Colorize;
     use crate::data::PasswordJson;
+    use colored::Colorize;
     use regex::Regex;
     use rpassword::read_password;
     use std::io;
